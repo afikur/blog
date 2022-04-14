@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 @RequestMapping(value = "/posts")
@@ -31,7 +32,12 @@ public class PostController {
 
     @GetMapping
     public String getPosts(Model model) {
-        List<Post> posts = postService.findAll();
+        List<PostDto> posts = postService
+                .findAll()
+                .stream()
+                .map(postMapper::toDto)
+                .collect(Collectors.toList());
+
         model.addAttribute("posts", posts);
         return "post/postList";
     }
@@ -44,7 +50,7 @@ public class PostController {
 
     @PostMapping("/add")
     public String savePost(@ModelAttribute @Valid PostDto postDto) {
-        Post post = postMapper.postDtoToPost(postDto);
+        Post post = postMapper.toPost(postDto);
         postService.save(post);
         return "redirect:/posts";
     }

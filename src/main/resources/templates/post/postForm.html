@@ -2,24 +2,31 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Add Post</title>
+    <head th:replace="fragments/baseHeader :: baseHeader(~{::title},~{::link})">
+        <title>Blog | Add Post</title>
+        <link rel="stylesheet" href="">
+    </head>
 </head>
 <body>
-<h1>Add new posts</h1>
-<form th:action="@{/posts/add}"
-      th:object="${post}"
-      method="post">
-    <div class="field">
-        <label>Title</label>
-        <input type="text" name="title" th:field="*{title}" placeholder="Title">
-    </div>
-    <div class="ui form">
-        <div class="field">
-            <label>Body</label>
-            <textarea name="body" th:field="*{body}" placeholder="Post body"></textarea>
+<div class="ui container">
+    <h1>Add new posts</h1>
+
+    <form th:action="@{/posts/add}"
+          th:object="${post}"
+          method="post">
+
+        <div class="ui form">
+            <div class="field">
+                <label>Title</label>
+                <input type="text" name="title" th:field="*{title}" placeholder="Title">
+            </div>
+            <div class="field">
+                <label>Body</label>
+                <textarea name="body" th:field="*{body}" placeholder="Post body"></textarea>
+            </div>
+            <button class="ui button" type="submit">Publish</button>
         </div>
-    </div>
-    <button class="ui button" type="submit">Publish</button>
-</form>
+    </form>
+</div>
 </body>
 </html>

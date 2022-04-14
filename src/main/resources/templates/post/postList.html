@@ -4,21 +4,26 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>All Posts</title>
+    <head th:replace="fragments/baseHeader :: baseHeader(~{::title},~{::link})">
+        <title>Blog | All Posts</title>
+        <link rel="stylesheet" href="">
+    </head>
 </head>
 <body>
+<div class="ui container">
+    <div class="ui link cards">
+        <div th:each="post : ${posts}"
+             class="card">
+            <div class="content">
+                <div th:text="${post.title}"
+                     class="header"></div>
 
-<div th:each="post : ${posts}"
-     class="ui raised link card">
-    <div class="content">
-        <div th:text="${post.title}"
-             class="header"></div>
-
-        <div class="description">
-            <div th:text="${post.body}"></div>
+                <div class="description">
+                    <div th:text="${post.body}"></div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-
 </body>
 </html>
