@@ -2,12 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <head th:replace="fragments/baseHeader :: baseHeader(~{::title},~{::link})">
+    <head th:replace="fragments/baseHeader :: baseHeader(~{::title},~{})">
         <title>Blog | Add Post</title>
-        <link rel="stylesheet" href="">
     </head>
 </head>
 <body>
+<div th:replace="fragments/navbar :: navbar"></div>
+
 <div class="ui container">
     <h1>Add new posts</h1>
 

@@ -4,23 +4,23 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <head th:replace="fragments/baseHeader :: baseHeader(~{::title},~{::link})">
+    <head th:replace="fragments/baseHeader :: baseHeader(~{::title},~{})">
         <title>Blog | All Posts</title>
-        <link rel="stylesheet" href="">
     </head>
 </head>
 <body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
 <div class="ui container">
-    <div class="ui link cards">
+    <div class="ui link four cards">
         <div th:each="post : ${posts}"
              class="card">
+            <div class="image">
+                <img src="https://via.placeholder.com/300">
+            </div>
             <div class="content">
                 <div th:text="${post.title}"
                      class="header"></div>
-
-                <div class="description">
-                    <div th:text="${post.body}"></div>
-                </div>
             </div>
         </div>
     </div>
