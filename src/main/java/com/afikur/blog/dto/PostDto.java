@@ -9,6 +9,8 @@ import javax.validation.constraints.Size;
 @Setter
 @Getter
 public class PostDto {
+    private Long id;
+
     @NotBlank(message = "Title can't be empty.")
     @Size(min = 10, message = "Title must be at least 10 characters.")
     private String title;

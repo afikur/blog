@@ -16,15 +16,17 @@
           th:object="${post}"
           method="post">
 
-        <div class="ui form">
-            <div class="field">
+        <div class="ui form error">
+            <div th:class="${#fields.hasErrors('title')} ? 'required field error' : 'required field'">
                 <label>Title</label>
                 <input type="text" name="title" th:field="*{title}" placeholder="Title">
             </div>
-            <div class="field">
+            <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="ui error message"></div>
+            <div th:class="${#fields.hasErrors('title')} ? 'required field error' : 'required field'">
                 <label>Body</label>
                 <textarea name="body" th:field="*{body}" placeholder="Post body"></textarea>
             </div>
+            <div th:if="${#fields.hasErrors('body')}" th:errors="*{body}" class="ui error message"></div>
             <button class="ui button" type="submit">Publish</button>
         </div>
     </form>

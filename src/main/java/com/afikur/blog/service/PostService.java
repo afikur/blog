@@ -2,7 +2,6 @@ package com.afikur.blog.service;
 
 import com.afikur.blog.model.Post;
 import com.afikur.blog.repository.PostRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
