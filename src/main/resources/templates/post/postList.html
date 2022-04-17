@@ -15,12 +15,14 @@
     <div class="ui link four cards">
         <div th:each="post : ${posts}"
              class="card">
-            <div class="image">
+            <a th:href="@{/posts/{id}(id=${post.id})}" class="image">
                 <img src="https://via.placeholder.com/300">
-            </div>
+            </a>
+
             <div class="content">
-                <div th:text="${post.title}"
-                     class="header"></div>
+                <a class="header"
+                   th:text="${post.title}"
+                   th:href="@{/posts/{id}(id=${post.id})}">Steve Jobes</a>
             </div>
         </div>
     </div>

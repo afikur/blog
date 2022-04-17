@@ -12,7 +12,7 @@
 <div class="ui container">
     <h1>Add new posts</h1>
 
-    <form th:action="@{/posts/add}"
+    <form th:action="@{/posts/update/{id}(id=${post.id})}"
           th:object="${post}"
           method="post">
 

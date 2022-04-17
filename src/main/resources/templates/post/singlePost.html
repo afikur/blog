@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <head th:replace="fragments/baseHeader :: baseHeader(~{::title},~{})">
+        <title th:text="${post.title}"></title>
+    </head>
+</head>
+<body>
+
+<div th:replace="fragments/navbar :: navbar"></div>
+<div class="ui container">
+    <h1 class="ui dividing" th:text="${post.title}">First header</h1>
+    <p>Created at: <span th:text="${post.createdAt}"></span></p>
+    <p>Updated at: <span th:text="${post.updatedAt}"></span></p>
+    <br>
+    <p th:text="${post.body}"></p>
+    <a th:href="@{/posts/edit/{id}(id=${post.id})}">Edit</a>
+
+    <form th:action="@{/posts/delete/{id}(id=${post.id})}"
+          method="post"
+          onsubmit="return confirm('Are You sure to delete this post?');">
+        <button type="submit">Delete</button>
+    </form>
+</div>
+</body>
+</html>

@@ -1,13 +1,12 @@
 package com.afikur.blog.dto;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.util.Date;
 
-@Setter
-@Getter
+@Data
 public class PostDto {
     private Long id;
 
@@ -18,4 +17,8 @@ public class PostDto {
     @NotBlank(message = "Body can't be empty")
     @Size(min = 20, message = "Body must be at least 30 characters.")
     private String body;
+
+    private Date createdAt;
+
+    private Date updatedAt;
 }

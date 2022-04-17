@@ -5,6 +5,7 @@ import com.afikur.blog.repository.PostRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PostService {
@@ -20,5 +21,13 @@ public class PostService {
 
     public Post save(Post post) {
         return postRepository.save(post);
+    }
+
+    public Optional<Post> findById(Long id) {
+        return postRepository.findById(id);
+    }
+
+    public void delete(Post post) {
+        postRepository.delete(post);
     }
 }
